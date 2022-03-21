@@ -19,5 +19,11 @@ namespace ASP_DotNetCore_MVC_Exercise1
         {
             return _conn.Query<Product>("SELECT * FROM products;");
         }
+
+        public Product GetProduct(int id)
+        {
+            return _conn.QuerySingle<Product>("SELECT * FROM products WHERE productID = @id",
+                new { id = id });
+        }
     }
 }
