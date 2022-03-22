@@ -22,8 +22,14 @@ namespace ASP_DotNetCore_MVC_Exercise1
 
         public Product GetProduct(int id)
         {
-            return _conn.QuerySingle<Product>("SELECT * FROM products WHERE productID = @id",
+            return _conn.QuerySingle<Product>("SELECT * FROM products WHERE productID = @id;",
                 new { id = id });
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _conn.Execute("UPDATE products SET Name = @Name, Price = @price WHERE productID = @id;",
+                new { name = product.Name, price = product.Price, id = product.ProductID });
         }
     }
 }
