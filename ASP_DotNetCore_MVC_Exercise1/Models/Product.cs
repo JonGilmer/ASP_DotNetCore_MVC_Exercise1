@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace ASP_DotNetCore_MVC_Exercise1.Models
 {
     public class Product
@@ -13,6 +15,7 @@ namespace ASP_DotNetCore_MVC_Exercise1.Models
         public int CategoryID { get; set; }
         public int OnSale { get; set; }
         public int StockLevel { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
 
     }
 }
