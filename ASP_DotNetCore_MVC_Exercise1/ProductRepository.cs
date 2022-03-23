@@ -23,6 +23,16 @@ namespace ASP_DotNetCore_MVC_Exercise1
             return product;
         }
 
+        public void DeleteProduct(Product product)
+        {
+            _conn.Execute("DELETE FROM reviews WHERE ProductID = @id;",
+                new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Sales WHERE ProductID = @id;",
+                new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Products WHERE ProductID =@id",
+                new { id = product.ProductID });
+        }
+
         public IEnumerable<Product> GetAllProducts()
         {
             return _conn.Query<Product>("SELECT * FROM products;");

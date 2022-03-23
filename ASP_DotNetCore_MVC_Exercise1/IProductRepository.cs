@@ -18,5 +18,7 @@ namespace ASP_DotNetCore_MVC_Exercise1
 
         public Product AssignCategory();
 
+        public void DeleteProduct(Product product);
+
     }
 }

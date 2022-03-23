@@ -23,6 +23,7 @@ namespace ASP_DotNetCore_MVC_Exercise1.Controllers
         public IActionResult Index()
         {
             var products = repo.GetAllProducts();
+
             return View(products);
         }
 
@@ -54,12 +55,21 @@ namespace ASP_DotNetCore_MVC_Exercise1.Controllers
         public IActionResult InsertProduct()
         {
             var prod = repo.AssignCategory();
+
             return View(prod);
         }
 
         public IActionResult InsertProductToDatabase(Product productToInsert)
         {
             repo.InsertProduct(productToInsert);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteProduct(Product product)
+        {
+            repo.DeleteProduct(product);
+
             return RedirectToAction("Index");
         }
 
